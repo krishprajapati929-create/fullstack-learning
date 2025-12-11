@@ -2,7 +2,9 @@ import React from 'react'
 import Navbar from '../components/layout/Navbar'
 import HomePage from '../pages/HomePage'
 import CartPage from '../pages/CartPage'
+import ProductDetailPage from '../pages/ProductDetailPage'
 import {Route,Routes} from 'react-router-dom'
+
 
 const AppRoutes = () => {
   return (
@@ -12,6 +14,7 @@ const AppRoutes = () => {
         <Routes>
             <Route path="/" element={<HomePage/>}/>
             <Route path="/cart" element={<CartPage/>}/>
+            <Route path="/product/:id" element={<ProductDetailPage/>}/>
 
         </Routes>
         </main>

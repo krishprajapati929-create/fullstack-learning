@@ -1,10 +1,20 @@
 import React from 'react'
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({product}) => {
+    const navigate=useNavigate()
+
+    const handleViewDetails=()=>{
+        navigate(`/product/${product.id}`)
+        console.log(product.id)
+    }
+    const handleAddToCart=()=>{
+        console.log(product)
+    }
   return (
     <div>
-        <div className='p-4 border-1 w-79 rounded-xl border-black-500 shadow-lg hover:shadow-2xl '>
+        <div className='p-4 border-1 w-78 rounded-xl border-black-500 shadow-lg hover:shadow-2xl '>
             <div >
                 <img className='rounded-lg w-full h-52 overflow-hidden mb-3' src={product.image} alt={product.name} />
             </div>
@@ -25,9 +35,15 @@ const ProductCard = ({product}) => {
         (10% OFF)
     </span>
     </h4>
-                <h4 className='text-gray-500 mt-1'>{product.review}  Reviews</h4>
+                <h4 className='text-gray-500 mt-1'>{product.review}Reviews</h4>
             </div>
-            <button className='bg-green-600 text-white w-full rounded-lg py-2 font-semibold transition-all hover:bg-green-700 duration-300 mt-4 '>Add to Cart</button>
+            <div className='flex gap-2 mt-3 h-8'>
+                <button className='flex-1 border border-orange-500 text-orange-500 text-xs py-1.5 rounded-md hover:bg-orange-100 '
+                onClick={handleViewDetails}
+                >view</button>
+                <button className='flex-1 bg-orange-500 text-white text-xs hover:bg-orange-400 rounded-md'
+                onClick={handleAddToCart}>Add</button>
+            </div>
         </div>
     </div>
   )

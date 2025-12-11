@@ -1,45 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import FilterBar from '../components/layout/FilterBar';
-import ProductCard from '../components/common/ProductCard';
-
+import React from 'react'
+import { useState,useEffect } from 'react'
+import FilterBar from '../components/layout/FilterBar'
+import ProductCard from '../components/common/ProductCard'
 
 const HomePage = () => {
-  const [loading,setLoading]=useState(false);
-  const [products,setProducts]=useState([])
+  const [loading,setLoading]=useState(false)
+  const [product,setProduct]=useState([])
   const [error,setError]=useState(null)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
+  useEffect(()=>{
+    const fetchdata = async()=>{
+      setLoading(true)
       setError(null)
-      try{
-        const response = await fetch('http://localhost:3000/products')
-        const data = await response.json();
-        console.log("our product data",data)
-        setProducts(data);
+      try {
+      const res = await fetch("http://localhost:3000/products")
+      const data = await res.json()
+      setProduct(data)
+
+      console.log("our product data",data)
       } catch (error) {
         setError(error)
-        console.error('Error fetching products:',error);
-      } finally {
-        setLoading(false);
+        console.error('error feching product',error)
+      }finally{
+        setLoading(false)
       }
-      
+
     }
-    fetchData()
-  },[])
+    fetchdata()
+},[])
   return (
     <div>
-    <h1 className='text-2xl font-semibold mb-4'>Food Items</h1>
-    <FilterBar/>
-    {error && <div className='text-red-500'>Error loading products</div>}
-    {!loading && !error && products.length!==0 && (
-      <div className='mt-6 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-4'>
-        {products.map((product)=>{
-          return <ProductCard product={product}/>
+      <h2 className='text-red-500 text-xl'>swizzo items</h2>
+      <FilterBar/>
+      {error&&<h2 className='text-red-500'>product not fetched</h2>}
+      {!error && product.length!==0 && !loading &&(
+        <div  className='grid mt-4 gap-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:grid-cols-4'>
+      {product.map(product=>(
+        <div key={product.id}><ProductCard product={product}/></div>
 
-        })}
+      ))}
       </div>
-    )}
+      )}
+      
     </div>
   )
 }
