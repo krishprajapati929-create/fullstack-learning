@@ -12,7 +12,7 @@ const HomePage = () => {
       setLoading(true)
       setError(null)
       try {
-      const res = await fetch("http://localhost:3000/products")
+      const res = await fetch("http://localhost:3001/products")
       const data = await res.json()
       setProduct(data)
 

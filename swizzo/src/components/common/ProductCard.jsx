@@ -1,10 +1,10 @@
 import React from 'react'
 import { FaStar, FaRegStar } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 
 const ProductCard = ({product}) => {
-    const navigate=useNavigate()
-
+    const navigate = useNavigate()
     const handleViewDetails=()=>{
         navigate(`/product/${product.id}`)
         console.log(product.id)
