@@ -1,17 +1,21 @@
 import React from 'react'
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 
 
 const ProductCard = ({product}) => {
+    const {addToCart}=useCart()
+
     const navigate = useNavigate()
     const handleViewDetails=()=>{
         navigate(`/product/${product.id}`)
         console.log(product.id)
     }
-    const handleAddToCart=()=>{
-        console.log(product)
-    }
+   
+        const handleAddToCart=()=>{
+            addToCart(product)
+        }
   return (
     <div>
         <div className='p-4 border-1 w-78 rounded-xl border-black-500 shadow-lg hover:shadow-2xl '>
@@ -42,7 +46,7 @@ const ProductCard = ({product}) => {
                 onClick={handleViewDetails}
                 >view</button>
                 <button className='flex-1 bg-orange-500 text-white text-xs hover:bg-orange-400 rounded-md'
-                onClick={handleAddToCart}>Add</button>
+                onClick={()=>handleAddToCart()}>Add</button>
             </div>
         </div>
     </div>
