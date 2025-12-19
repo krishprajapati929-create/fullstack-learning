@@ -43,7 +43,7 @@ const CartPage = () => {
           </div>
           <div className='flex gap-3'>
             <button className='bg-red-500 px-4 py-2 h-fit text-white'>Clear</button>
-            <button onClick={()=>navigate("/Payment")} className='bg-blue-800 px-4 py-2 h-fit text-white'>Go To Payment</button>
+            <button onClick={()=>navigate("/payment")} className='bg-blue-800 px-4 py-2 h-fit text-white'>Go To Payment</button>
           </div>
         </div>
         </>

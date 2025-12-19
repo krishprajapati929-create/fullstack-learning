@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage'
 import CartPage from '../pages/CartPage'
 import ProductDetailPage from '../pages/ProductDetailPage'
 import {Route,Routes} from 'react-router-dom'
+import PaymentPage from '../pages/PaymentPage'
 
 
 const AppRoutes = () => {
@@ -15,6 +16,7 @@ const AppRoutes = () => {
             <Route path="/" element={<HomePage/>}/>
             <Route path="/cart" element={<CartPage/>}/>
             <Route path="/product/:id" element={<ProductDetailPage/>}/>
+            <Route path="/payment" element={<PaymentPage/>}/>
         </Routes>
         </main>
     </div>

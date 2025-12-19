@@ -1,8 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { FaCartPlus } from "react-icons/fa";
-
+import { useCart } from '../../context/CartContext';
 const Navbar = () => {
+  const {totalQty}=useCart();
   let isLoggedIn = false;
   return (
     <header className='bg-white shadow-md sticky top-0 z-10'>
@@ -14,6 +15,7 @@ const Navbar = () => {
                 </Link>
                 <Link to="/cart" className='text-gray-700 hover:text-green-600 flex items-center gap-1'>
                 Cart <FaCartPlus />
+                <span className='bg-orange-500 text-white rounded-full ml-1  px-2  '>{totalQty}</span>
                 </Link>
             </div>
             <div>
