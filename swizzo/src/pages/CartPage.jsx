@@ -1,6 +1,7 @@
 import React from 'react'
 import { useCart } from '../context/CartContext'
 import { useNavigate } from 'react-router-dom'
+import { MdDelete } from "react-icons/md";
 
 
 const CartPage = () => {
@@ -18,10 +19,10 @@ const CartPage = () => {
       ):(
         <>
         <ul className='space-y-4'>
-          {cartItem.map((item)=>(
-            <li key={item.id} className='flex gap-4 bg-white p-3 rounded-2xl shadow-sm'>
+          {cartItem.map((item,index)=>(
+            <li key={item.id} className='flex justify-between gap-4 bg-white p-3 pr-8 rounded-2xl shadow-sm'>
               <div className='flex gap-4 items-center'>
-                <h3 className='font-medium'>{item.id}</h3>
+                <h3 className='font-medium'>{index+1}</h3>
                 <p className='text-sm text-gray-500'>price:${item.price}</p>
                 <p className='text-sm text-gray-500'>Added At{item.addedAt}</p>
                   <div className='ml-3 flex items-center gap-3'>
@@ -32,7 +33,7 @@ const CartPage = () => {
                     <span className='ml-4 text-sm'>subtotal:{item.quantity*item.price}</span>
                   </div>
                 </div>
-                <button onClick={()=>removeFromCart(item.id)}>Remove</button>
+                <button onClick={()=>removeFromCart(item.id)}><MdDelete /></button>
                 </li>
           ))}
         </ul>
